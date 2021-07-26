@@ -10,7 +10,6 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     @IBOutlet var displayLabel: UILabel!
-    var textToDisplay = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +17,6 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
         let url = "https://api.openweathermap.org/data/2.5/onecall?lat=41.799688&lon=-88.111088&exclude=minutely,hourly,daily,alerts&units=imperial&appid=89652d405a68b80049a6f3fa42909a1a"
         getDataFromURL(from: url)
-        print(textToDisplay)
         
     }
     
@@ -43,13 +41,19 @@ class WeatherViewController: UIViewController {
             }
             
             //json stuff here
-            self.textToDisplay = json.lat.description
-            print(self.textToDisplay)
+            self.updateDisplay(result: json.current, response: json.timezone)
         })
         
         task.resume()
         
     }
+    func updateDisplay(result: MyResult, response: String){
+        DispatchQueue.main.async {
+            self.displayLabel.text = result.temp.description
+            self.displayLabel.text! += response
+        }
+    }
+    
     
     struct Response: Codable {
         let lat: Double
