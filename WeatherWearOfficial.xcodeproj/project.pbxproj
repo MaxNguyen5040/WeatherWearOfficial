@@ -13,6 +13,7 @@
 		B5077D5426A9E1F9003C8110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5226A9E1F9003C8110 /* Main.storyboard */; };
 		B5077D5626A9E1FD003C8110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5526A9E1FD003C8110 /* Assets.xcassets */; };
 		B5077D5926A9E1FD003C8110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5726A9E1FD003C8110 /* LaunchScreen.storyboard */; };
+		B596763A26AF1E8B00A9C358 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596763926AF1E8B00A9C358 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B5077D5526A9E1FD003C8110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5077D5826A9E1FD003C8110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5077D5A26A9E1FD003C8110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B596763926AF1E8B00A9C358 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				B5077D4E26A9E1F9003C8110 /* SceneDelegate.swift */,
 				B5077D5026A9E1F9003C8110 /* ViewController.swift */,
 				B5077D5226A9E1F9003C8110 /* Main.storyboard */,
+				B596763926AF1E8B00A9C358 /* WeatherViewController.swift */,
 				B5077D5526A9E1FD003C8110 /* Assets.xcassets */,
 				B5077D5726A9E1FD003C8110 /* LaunchScreen.storyboard */,
 				B5077D5A26A9E1FD003C8110 /* Info.plist */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5077D5126A9E1F9003C8110 /* ViewController.swift in Sources */,
+				B596763A26AF1E8B00A9C358 /* WeatherViewController.swift in Sources */,
 				B5077D4D26A9E1F9003C8110 /* AppDelegate.swift in Sources */,
 				B5077D4F26A9E1F9003C8110 /* SceneDelegate.swift in Sources */,
 			);

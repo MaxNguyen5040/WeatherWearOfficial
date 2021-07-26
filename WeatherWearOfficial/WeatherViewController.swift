@@ -1,23 +1,24 @@
 //
-//  ViewController.swift
+//  WeatherViewController.swift
 //  WeatherWearOfficial
 //
-//  Created by Max Nguyen on 7/22/21.
-//  41.799688 -88.111088
+//  Created by Max Nguyen on 7/26/21.
+//
 
 import UIKit
 
-class ViewController: UIViewController {
-        
+class WeatherViewController: UIViewController {
+    
+    @IBOutlet var displayLabel: UILabel!
+    var textToDisplay = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        print("hiiiii")
         let url = "https://api.openweathermap.org/data/2.5/onecall?lat=41.799688&lon=-88.111088&exclude=minutely,hourly,daily,alerts&units=imperial&appid=89652d405a68b80049a6f3fa42909a1a"
         getDataFromURL(from: url)
-        
-        
+        print(textToDisplay)
         
     }
     
@@ -41,7 +42,9 @@ class ViewController: UIViewController {
                 return
             }
             
-            print(json.lon.description)
+            //json stuff here
+            self.textToDisplay = json.lat.description
+            print(self.textToDisplay)
         })
         
         task.resume()
@@ -89,6 +92,8 @@ class ViewController: UIViewController {
      }
     }
      */
- 
-}
+    
 
+    
+
+}
