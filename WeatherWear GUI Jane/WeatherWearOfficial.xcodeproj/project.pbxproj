@@ -12,6 +12,7 @@
 		B5077D5426A9E1F9003C8110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5226A9E1F9003C8110 /* Main.storyboard */; };
 		B5077D5626A9E1FD003C8110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5526A9E1FD003C8110 /* Assets.xcassets */; };
 		B5077D5926A9E1FD003C8110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5077D5726A9E1FD003C8110 /* LaunchScreen.storyboard */; };
+		B56F78B626B0679000BF505A /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F78B526B0679000BF505A /* ForecastViewController.swift */; };
 		B596763A26AF1E8B00A9C358 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596763926AF1E8B00A9C358 /* WeatherViewController.swift */; };
 		E81FA35626B04C79002DD70D /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81FA35526B04C79002DD70D /* ClothingItem.swift */; };
 		E81FA35826B04F91002DD70D /* AddClothingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81FA35726B04F91002DD70D /* AddClothingItemViewController.swift */; };
@@ -26,6 +27,7 @@
 		B5077D5526A9E1FD003C8110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5077D5826A9E1FD003C8110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5077D5A26A9E1FD003C8110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B56F78B526B0679000BF505A /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		B596763926AF1E8B00A9C358 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		E81FA35526B04C79002DD70D /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
 		E81FA35726B04F91002DD70D /* AddClothingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClothingItemViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				B5077D4C26A9E1F9003C8110 /* AppDelegate.swift */,
 				B5077D5526A9E1FD003C8110 /* Assets.xcassets */,
 				B5077D5726A9E1FD003C8110 /* LaunchScreen.storyboard */,
+				B56F78B526B0679000BF505A /* ForecastViewController.swift */,
 				B5077D5A26A9E1FD003C8110 /* Info.plist */,
 			);
 			path = WeatherWearOfficial;
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E81FA35626B04C79002DD70D /* ClothingItem.swift in Sources */,
+				B56F78B626B0679000BF505A /* ForecastViewController.swift in Sources */,
 				E86B019326AFC4E700D71790 /* ClosetViewController.swift in Sources */,
 				B596763A26AF1E8B00A9C358 /* WeatherViewController.swift in Sources */,
 				E81FA35826B04F91002DD70D /* AddClothingItemViewController.swift in Sources */,
