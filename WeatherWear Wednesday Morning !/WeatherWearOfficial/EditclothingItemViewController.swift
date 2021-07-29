@@ -12,29 +12,30 @@ class EditclothingItemViewController: UIViewController {
     @IBOutlet var clothingItemTextField: UITextField!
     @IBOutlet var warmnessSlider: UISlider!
     @IBOutlet var warmnessLabel: UILabel!
+    
+    var index = 0
+    
     var clothingItemText = ""
     var warmness: Float = 1
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        clothingItemTextField.text = clothingItemText
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func onSubmitButtonPressed(_ sender: UIButton) {
         clothingItemText = clothingItemTextField.text!
         warmness = warmnessSlider.value
+        
+        let item = ClothingItem(name: clothingItemText, warmness: Int(warmness))
+        ClothingRack.rack.insert(item, at: index)
+        
         performSegue(withIdentifier: "editUnwindID", sender: self)
+        
     }
     
     @IBAction func onSliderValueChanged(_ sender: UISlider) {

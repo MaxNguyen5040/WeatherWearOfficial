@@ -25,6 +25,8 @@ class AddClothingItemViewController: UIViewController {
     @IBAction func onSubmitButtonPressed(_ sender: Any) {
         clothingItemText = clothingItemTextField.text!
         warmness = warmnessSlider.value
+        let item = ClothingItem(name: clothingItemText, warmness: Int(warmness))
+        ClothingRack.rack.append(item)
         performSegue(withIdentifier: "unwindID", sender: self)
     }
     

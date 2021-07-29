@@ -15,11 +15,31 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var tankTop = ClothingItem(name: "Tank Top", warmness: 1)
+        var tShirt = ClothingItem(name: "Grey CHANCE T-shirt", warmness: 2)
+        var jacket = ClothingItem(name: "Jacket", warmness: 3)
+        var lightCoat = ClothingItem(name: "Light Coat", warmness: 4)
+        var hoodie = ClothingItem(name: "Hoodie", warmness: 5)
+        var sweatShirt = ClothingItem(name: "Sweat Shirt", warmness: 6)
+        var coat = ClothingItem(name: "Coat", warmness: 7)
+        var trenchCoat = ClothingItem(name: "Trench Coat", warmness: 8)
+        var thickSweater = ClothingItem(name: "Saturday Sweater", warmness: 9)
+        var parka = ClothingItem(name: "Parka", warmness: 10)
+
+
+        clothes = [trenchCoat,tShirt,hoodie,tankTop,lightCoat,parka,jacket,thickSweater,coat,sweatShirt]
         
-        var sweater = ClothingItem(name: "Ugly Sweater", warmness: 9)
-        var tShirt = ClothingItem(name: "Grey CHANCE T-shirt", warmness: 1)
-        var jeans = ClothingItem(name: "Jeans", warmness: 5)
-        clothes = [sweater, tShirt, jeans]
+        ClothingRack.rack.insert(sweatShirt, at: 0)
+        ClothingRack.rack.insert(coat, at: 0)
+        ClothingRack.rack.insert(thickSweater, at: 0)
+        ClothingRack.rack.insert(jacket, at: 0)
+        ClothingRack.rack.insert(parka, at: 0)
+        ClothingRack.rack.insert(lightCoat, at: 0)
+        ClothingRack.rack.insert(tankTop, at: 0)
+        ClothingRack.rack.insert(hoodie, at: 0)
+        ClothingRack.rack.insert(tShirt, at: 0)
+        ClothingRack.rack.insert(trenchCoat, at: 0)
+        
     }
     
     
@@ -55,4 +75,15 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         closetTableView.reloadData()
         // Use data from the view controller which initiated the unwind segue
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "editID"){
+            let ecivc = segue.destination as! EditclothingItemViewController
+            ecivc.index = closetTableView.indexPathForSelectedRow!.row
+            let index = closetTableView.indexPathForSelectedRow!.row
+            ecivc.clothingItemText = ClothingRack.rack[index].name
+        }
+    }
+    
+
 }

@@ -10,6 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var displayLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var recommendationLabel: UILabel!
@@ -24,22 +25,29 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var humidityLabel: UILabel!
     let manager = CLLocationManager()
     
-    override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            //Do any additional setup after loading the view.
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-            manager.requestWhenInUseAuthorization()
-            manager.delegate = self
-            manager.startUpdatingLocation()
-            
-           let lat = manager.location!.coordinate.latitude
-            let lon = manager.location!.coordinate.longitude
+    var foundItem: ClothingItem?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Do any additional setup after loading the view.
+        spinner.startAnimating()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.delegate = self
+        manager.startUpdatingLocation()
+    
+        
+        let lat = manager.location!.coordinate.latitude
+        let lon = manager.location!.coordinate.longitude
 
-            let url = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,daily,alerts,hourly&units=imperial&appid=89652d405a68b80049a6f3fa42909a1a"
-            getDataFromURL(from: url)
-            
-        }
+        let url = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,daily,alerts,hourly&units=imperial&appid=89652d405a68b80049a6f3fa42909a1a"
+        getDataFromURL(from: url)
+
+        
+    }
+    
+
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             if let location = locations.first{
@@ -77,6 +85,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         func updateDisplay(current: Current, timezone: String, weather: [Weather]){
             DispatchQueue.main.async {
+                self.spinner.hidesWhenStopped = true
+                self.spinner.stopAnimating()
+                
                 self.temperatureLabel.text = "Current: \(current.temp.description)°"
                 self.displayLabel.text = "Timezone: \(timezone.description)"
                 self.feelsLikeLabel.text = "Feels like: \(current.feels_like)°"
@@ -87,11 +98,63 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.cloudPercentLabel.text = "Percent of cloudy sky: \(current.clouds.description)%"
                 self.uviLabel.text = "Uvi index: \(current.uvi.description)"
                 self.humidityLabel.text = "Humidity: \(current.humidity.description)%"
-                
-                
+                      
+                if(current.feels_like >= 85){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 1)
+                }
+                else if(current.feels_like >= 70 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 2)
+
+                }
+                else if(current.feels_like >= 60 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 3)
+                }
+                else if(current.feels_like >= 50 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 4)
+                }
+                else if(current.feels_like >= 40 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 5)
+                }
+                else if(current.feels_like >= 30 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 6)
+                }
+                else if(current.feels_like >= 20 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 7)
+                }
+                else if(current.feels_like >= 10 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 8)
+                }
+                else if(current.feels_like >= 0 ){
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 9)
+                }
+                else{
+                    self.recommendationLabel.text = self.randomSearch(searchValue: 10)
+                }
                 
             }
         }
+    
+    func randomSearch(searchValue: Int) -> String{
+        var found = false
+        var Items = [ClothingItem]()
+        
+        for item in ClothingRack.rack {
+            if(item.warmness == searchValue){
+                Items.append(item)
+                found = true
+            }
+        }
+        
+        if found == false{
+            return "Go buy some new clothes!"
+        }
+        else{
+            let item = Items.randomElement()
+            return "You should wear a \(item!.name) today."
+        }
+    }
+    
+
         
         
         struct Response: Codable {
